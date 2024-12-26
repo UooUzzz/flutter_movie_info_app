@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_movie_reservation_app/pages/home/widgets/popular_list.dart';
 import 'package:flutter_movie_reservation_app/pages/home/widgets/post_list.dart';
 
 class HomePage extends StatelessWidget {
@@ -47,6 +48,8 @@ class HomePage extends StatelessWidget {
                 title: '현재 상영중',
                 imageUrl: imageUrl,
               ),
+              SizedBox(height: 18),
+              PopularList(imageUrl),
               PostList(
                 title: '평점 높은순',
                 imageUrl: imageUrl,

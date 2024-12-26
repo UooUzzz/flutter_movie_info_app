@@ -35,8 +35,11 @@ class PostList extends StatelessWidget {
                 children: [
                   if (index > 0) SizedBox(width: 8), // 첫번째 이미지빼고 간격주기
                   ClipRRect(
-                    borderRadius: BorderRadius.circular(15),
-                    child: Image.network(imageUrl[index]),
+                    borderRadius: BorderRadius.circular(10),
+                    child: Image.network(
+                      imageUrl[index],
+                      fit: BoxFit.cover,
+                    ),
                   ),
                 ],
               );
