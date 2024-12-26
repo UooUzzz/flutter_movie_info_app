@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_movie_reservation_app/pages/detail/detail_page.dart';
 import 'package:flutter_movie_reservation_app/pages/home/widgets/popular_list.dart';
 import 'package:flutter_movie_reservation_app/pages/home/widgets/post_list.dart';
 
@@ -35,11 +36,23 @@ class HomePage extends StatelessWidget {
                 padding: const EdgeInsets.only(right: 15),
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(15),
-                  child: Container(
-                    height: 500,
-                    child: Image.network(
-                      'https://picsum.photos/200/300',
-                      fit: BoxFit.cover,
+                  child: GestureDetector(
+                    onTap: () {
+                      Navigator.push(context, MaterialPageRoute(
+                        builder: (context) {
+                          return DetailPage();
+                        },
+                      ));
+                    },
+                    child: Hero(
+                      tag: 'movie-poster',
+                      child: Container(
+                        height: 500,
+                        child: Image.network(
+                          'https://picsum.photos/200/300',
+                          fit: BoxFit.cover,
+                        ),
+                      ),
                     ),
                   ),
                 ),

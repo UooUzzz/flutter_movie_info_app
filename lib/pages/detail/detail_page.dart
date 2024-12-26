@@ -9,13 +9,16 @@ class DetailPage extends StatelessWidget {
     return Scaffold(
       body: ListView(
         children: [
-          ClipRRect(
-            borderRadius: BorderRadius.circular(10),
-            child: Container(
-              height: 560,
-              child: Image.network(
-                'https://picsum.photos/200/300',
-                fit: BoxFit.cover,
+          Hero(
+            tag: 'movie-poster',
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(10),
+              child: Container(
+                height: 560,
+                child: Image.network(
+                  'https://picsum.photos/200/300',
+                  fit: BoxFit.cover,
+                ),
               ),
             ),
           ),
