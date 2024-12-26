@@ -13,18 +13,30 @@ class PostList extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
+        SizedBox(height: 12),
         Container(
-          child: Text(title),
+          alignment: Alignment.centerLeft,
+          child: Text(
+            title,
+            style: TextStyle(
+              fontSize: 17,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
         ),
+        SizedBox(height: 12),
         SizedBox(
-          height: 180, // 리스트뷰 높이 180 
+          height: 180, // 리스트뷰 높이 180
           child: ListView.builder(
             scrollDirection: Axis.horizontal,
             itemCount: 20,
             itemBuilder: (context, index) {
               return Padding(
-                padding: const EdgeInsets.all(8),
-                child: Image.network(imageUrl[index]),
+                padding: const EdgeInsets.only(right: 8),
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(15),
+                  child: Image.network(imageUrl[index]),
+                ),
               );
             },
           ),
