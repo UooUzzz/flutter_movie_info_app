@@ -31,16 +31,19 @@ class PostList extends StatelessWidget {
             scrollDirection: Axis.horizontal,
             itemCount: 20,
             itemBuilder: (context, index) {
-              return Padding(
-                padding: const EdgeInsets.only(right: 8),
-                child: ClipRRect(
-                  borderRadius: BorderRadius.circular(15),
-                  child: Image.network(imageUrl[index]),
-                ),
+              return Row(
+                children: [
+                  if (index > 0) SizedBox(width: 8), // 첫번째 이미지빼고 간격주기
+                  ClipRRect(
+                    borderRadius: BorderRadius.circular(15),
+                    child: Image.network(imageUrl[index]),
+                  ),
+                ],
               );
             },
           ),
         ),
+        SizedBox(width: 8),
       ],
     );
   }
