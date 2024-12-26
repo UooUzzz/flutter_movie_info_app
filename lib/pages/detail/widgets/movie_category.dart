@@ -6,7 +6,7 @@ class MovieCategory extends StatelessWidget {
     return SizedBox(
       height: 30,
       child: ListView.builder(
-        itemCount: 5,
+        itemCount: 10,
         scrollDirection: Axis.horizontal,
         itemBuilder: (context, index) {
           return Padding(

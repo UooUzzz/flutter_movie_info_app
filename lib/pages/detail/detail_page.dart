@@ -38,7 +38,7 @@ class DetailPage extends StatelessWidget {
                     Text(
                       '개봉일',
                       style: TextStyle(
-                        fontSize: 14,
+                        fontSize: 13,
                       ),
                     ),
                   ],
@@ -48,7 +48,10 @@ class DetailPage extends StatelessWidget {
                   '태그라인',
                   style: TextStyle(fontSize: 13),
                 ),
-                Text('러닝타임'),
+                Text(
+                  '러닝타임',
+                  style: TextStyle(fontSize: 14),
+                ),
                 detailDivider(),
                 MovieCategory(),
                 detailDivider(),
@@ -67,12 +70,7 @@ class DetailPage extends StatelessWidget {
                 ),
                 SizedBox(height: 8),
                 BoxOffice(),
-                SizedBox(
-                  height: 50,
-                  child: ListView(
-                    scrollDirection: Axis.horizontal,
-                  ),
-                ),
+                SizedBox(height: 20),
                 Sponsor(),
               ],
             ),
