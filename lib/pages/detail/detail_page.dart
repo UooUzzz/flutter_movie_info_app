@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_movie_reservation_app/pages/detail/widgets/movie_category.dart';
 
 class DetailPage extends StatelessWidget {
   @override
@@ -48,9 +49,13 @@ class DetailPage extends StatelessWidget {
                 Text('러닝타임'),
                 Divider(thickness: 1.5),
                 SizedBox(
-                  height: 20,
+                  height: 30,
                   child: ListView(
                     scrollDirection: Axis.horizontal,
+                    children: [
+                      MovieCategory(),
+                      MovieCategory(),
+                    ],
                   ),
                 ),
                 Divider(thickness: 1.5),
