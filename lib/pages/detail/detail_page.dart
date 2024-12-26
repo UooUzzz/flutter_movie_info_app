@@ -6,11 +6,11 @@ import 'package:flutter_movie_reservation_app/pages/detail/widgets/sponsor.dart'
 class DetailPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(  // 쓸어서 내리면 이전페이지로 감(뒤로가기 버튼 없어서 추가함) -> 잘안됨. 나중에 수정
-      onVerticalDragUpdate: (details) {
-        if (details.primaryDelta != null && details.primaryDelta! > 20) {
-          Navigator.pop(context);
-        }
+    return Dismissible( // 이걸로도 바꿔봤지만.. 잘안됨. 나중에 진짜 수정!
+      key: UniqueKey(),
+      direction: DismissDirection.down,
+      onDismissed: (direction) {
+        Navigator.pop(context);
       },
       child: Scaffold(
         body: ListView(
