@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_movie_reservation_app/pages/detail/widgets/box_office.dart';
 import 'package:flutter_movie_reservation_app/pages/detail/widgets/movie_category.dart';
+import 'package:flutter_movie_reservation_app/pages/detail/widgets/sponsor.dart';
 
 class DetailPage extends StatelessWidget {
   @override
@@ -44,41 +46,53 @@ class DetailPage extends StatelessWidget {
                 SizedBox(height: 7),
                 Text(
                   '태그라인',
-                  style: TextStyle(fontSize: 14),
+                  style: TextStyle(fontSize: 13),
                 ),
                 Text('러닝타임'),
-                Divider(thickness: 1.5),
-                SizedBox(
-                  height: 30,
-                  child: ListView(
-                    scrollDirection: Axis.horizontal,
-                    children: [
-                      MovieCategory(),
-                      MovieCategory(),
-                    ],
+                detailDivider(),
+                MovieCategory(),
+                detailDivider(),
+                Text(
+                  '영화 설명',
+                  style: TextStyle(fontSize: 13),
+                ),
+                detailDivider(),
+                SizedBox(height: 10),
+                Text(
+                  '흥행정보',
+                  style: TextStyle(
+                    fontSize: 16,
+                    fontWeight: FontWeight.bold,
                   ),
                 ),
-                Divider(thickness: 1.5),
-                Text('영화 설명'),
-                Divider(thickness: 1.5),
-                Text('흥행정보'),
-                SizedBox(
-                  height: 50,
-                  child: ListView(
-                    scrollDirection: Axis.horizontal,
-                  ),
-                ),
+                SizedBox(height: 8),
+                BoxOffice(),
                 SizedBox(
                   height: 50,
                   child: ListView(
                     scrollDirection: Axis.horizontal,
                   ),
                 ),
+                Sponsor(),
               ],
             ),
           ),
         ],
       ),
+    );
+  }
+}
+
+class detailDivider extends StatelessWidget {
+  const detailDivider({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Divider(
+      thickness: 1.5,
+      color: Colors.grey[850],
     );
   }
 }
