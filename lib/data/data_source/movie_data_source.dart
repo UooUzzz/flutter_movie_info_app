@@ -6,13 +6,13 @@ import 'package:flutter_movie_reservation_app/data/dto/movie_response_dto.dart';
 
 abstract interface class MovieDataSource {
 
-  Future<MovieResponseDto?> fetchNowPlayMovies();
+  Future<List<MovieResponseDto>> fetchNowPlayMovies();
 
-  Future<MovieResponseDto?> fetchPopularMovies();
+  Future<List<MovieResponseDto>> fetchPopularMovies();
 
-  Future<MovieResponseDto?> fetchTopRatedMovies();
+  Future<List<MovieResponseDto>> fetchTopRatedMovies();
 
-  Future<MovieResponseDto?> fetchUpcomingMovies();
+  Future<List<MovieResponseDto>> fetchUpcomingMovies();
 
-  Future<MovieDetailDto?> fetchMovieDetail(int id); 
+  Future<List<MovieDetailDto>> fetchMovieDetail(int id); 
 }

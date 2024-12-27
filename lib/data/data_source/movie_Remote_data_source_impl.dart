@@ -4,6 +4,9 @@ import 'package:flutter_movie_reservation_app/data/data_source/movie_data_source
 import 'package:flutter_movie_reservation_app/data/dto/movie_detail_dto.dart';
 import 'package:flutter_movie_reservation_app/data/dto/movie_response_dto.dart';
 
+
+// 여기서 리스트로 바꾸고 results 경로 map해주기
+
 class MovieRemoteDataSourceImpl implements MovieDataSource {
   // dio 사용
   final Dio _dio = Dio(BaseOptions(
@@ -17,28 +20,7 @@ class MovieRemoteDataSourceImpl implements MovieDataSource {
   // MovieRemoteDataSourceImpl();
 
   @override
-  Future<MovieDetailDto?> fetchMovieDetail(int id) async {
-    try {
-      final response = await _dio.get(
-        '$id',
-        queryParameters: {
-          'api_key': _apiKey,
-          'language': 'ko-KR',
-        },
-      );
-      if (response.statusCode == 200) {
-        final data = response.data;
-        return MovieDetailDto.fromJson(data);
-      } else {
-        throw Exception('Failed to load movie details');
-      }
-    } catch (e) {
-      rethrow;
-    }
-  }
-
-  @override
-  Future<MovieResponseDto?> fetchNowPlayMovies() async {
+  Future<List<MovieResponseDto>> fetchNowPlayMovies() async {
     try {
       final response = await _dio.get(
         'now_playing',
@@ -49,8 +31,8 @@ class MovieRemoteDataSourceImpl implements MovieDataSource {
         },
       );
       if (response.statusCode == 200) {
-        final data = response.data;
-        return MovieResponseDto.fromJson(data);
+        final data = response.data['results'] as List;
+        return data.map((movieJson) => MovieResponseDto.fromJson(movieJson)).toList();
       } else {
         throw Exception('Failed to load now playing movies');
       }
@@ -60,7 +42,7 @@ class MovieRemoteDataSourceImpl implements MovieDataSource {
   }
 
   @override
-  Future<MovieResponseDto?> fetchPopularMovies() async {
+  Future<List<MovieResponseDto>> fetchPopularMovies() async {
     try {
       final response = await _dio.get(
         'popular',
@@ -71,8 +53,8 @@ class MovieRemoteDataSourceImpl implements MovieDataSource {
         },
       );
       if (response.statusCode == 200) {
-        final data = response.data;
-        return MovieResponseDto.fromJson(data);
+        final data = response.data['results'] as List;
+        return data.map((movieJson) => MovieResponseDto.fromJson(movieJson)).toList();
       } else {
         throw Exception('Failed to load popular movies');
       }
@@ -82,7 +64,7 @@ class MovieRemoteDataSourceImpl implements MovieDataSource {
   }
 
   @override
-  Future<MovieResponseDto?> fetchTopRatedMovies() async {
+  Future<List<MovieResponseDto>> fetchTopRatedMovies() async {
     try {
       final response = await _dio.get(
         'top_rated',
@@ -93,8 +75,8 @@ class MovieRemoteDataSourceImpl implements MovieDataSource {
         },
       );
       if (response.statusCode == 200) {
-        final data = response.data;
-        return MovieResponseDto.fromJson(data);
+        final data = response.data['results'] as List;
+        return data.map((movieJson) => MovieResponseDto.fromJson(movieJson)).toList();
       } else {
         throw Exception('Failed to load top rated movies');
       }
@@ -104,7 +86,7 @@ class MovieRemoteDataSourceImpl implements MovieDataSource {
   }
 
   @override
-  Future<MovieResponseDto?> fetchUpcomingMovies() async {
+  Future<List<MovieResponseDto>> fetchUpcomingMovies() async {
     try {
       final response = await _dio.get(
         'upcoming',
@@ -115,10 +97,31 @@ class MovieRemoteDataSourceImpl implements MovieDataSource {
         },
       );
       if (response.statusCode == 200) {
-        final data = response.data;
-        return MovieResponseDto.fromJson(data);
+        final data = response.data['results'] as List;
+        return data.map((movieJson) => MovieResponseDto.fromJson(movieJson)).toList();
       } else {
         throw Exception('Failed to load upcoming movies');
+      }
+    } catch (e) {
+      rethrow;
+    }
+  }
+
+  @override
+  Future<List<MovieDetailDto>> fetchMovieDetail(int id) async {
+    try {
+      final response = await _dio.get(
+        '$id',
+        queryParameters: {
+          'api_key': _apiKey,
+          'language': 'ko-KR',
+        },
+      );
+      if (response.statusCode == 200) {
+        final data = response.data['results'] as List;
+        return data.map((movieJson) => MovieDetailDto.fromJson(movieJson)).toList();
+      } else {
+        throw Exception('Failed to load movie details');
       }
     } catch (e) {
       rethrow;
