@@ -25,30 +25,30 @@ class MovieDetailDto {
 
   MovieDetailDto.fromJson(Map<String, dynamic> map)
       : this(
-          genreIds: map['genreIds'],
+          genreIds: map['genre_ids'],
           id: map['id'],
-          originalTitle: map['originalTitle'],
+          originalTitle: map['original_title'],
           overview: map['overview'],
           popularity: map['popularity'],
-          posterPath: map['posterPath'],
-          releaseDate: map['releaseDate'],
+          posterPath: map['poster_path'],
+          releaseDate: map['release_date'],
           title: map['title'],
-          voteAverage: map['voteAverage'],
-          voteCount: map['voteCount'],
+          voteAverage: map['vote_average'],
+          voteCount: map['vote_count'],
         );
   
   Map<String, dynamic> toJson() {
     return {
-      'genreIds': genreIds,
+      'genre_ids': genreIds,
       'id': id,
-      'originalTitle': originalTitle,
+      'original_title': originalTitle,
       'overview': overview,
       'popularity': popularity,
-      'posterPath': posterPath,
-      'releaseDate': releaseDate,
+      'poster_path': posterPath,
+      'release_date': releaseDate,
       'title': title,
-      'voteAverage': voteAverage,
-      'voteCount': voteCount,
+      'vote_average': voteAverage,
+      'vote_count': voteCount,
     };
   }
 }
