@@ -1,5 +1,3 @@
-
-
 import 'package:flutter_movie_reservation_app/domain/entity/movie.dart';
 import 'package:flutter_movie_reservation_app/domain/entity/movie_detail.dart';
 import 'package:flutter_movie_reservation_app/domain/repository/movie_repository.dart';
