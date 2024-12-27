@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_movie_reservation_app/pages/detail/detail_page.dart';
-import 'package:flutter_movie_reservation_app/pages/home/widgets/popular_list.dart';
-import 'package:flutter_movie_reservation_app/pages/home/widgets/post_list.dart';
+import 'package:flutter_movie_reservation_app/presentation/pages/detail/detail_page.dart';
+import 'package:flutter_movie_reservation_app/presentation/pages/home/widgets/popular_list.dart';
+import 'package:flutter_movie_reservation_app/presentation/pages/home/widgets/post_list.dart';
 
 class HomePage extends StatelessWidget {
   @override

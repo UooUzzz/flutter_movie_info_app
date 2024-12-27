@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_movie_reservation_app/pages/detail/widgets/box_office.dart';
-import 'package:flutter_movie_reservation_app/pages/detail/widgets/movie_category.dart';
-import 'package:flutter_movie_reservation_app/pages/detail/widgets/sponsor.dart';
+import 'package:flutter_movie_reservation_app/presentation/pages/detail/widgets/box_office.dart';
+import 'package:flutter_movie_reservation_app/presentation/pages/detail/widgets/movie_category.dart';
+import 'package:flutter_movie_reservation_app/presentation/pages/detail/widgets/sponsor.dart';
 
 class DetailPage extends StatelessWidget {
   @override
