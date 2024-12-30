@@ -16,88 +16,56 @@ class HomeViewModel extends Notifier<List<Movie>> {
   @override
   List<Movie> build() => [];
 
-  Future<void> fetchNowPlayingMovies() async {
-    state = await fetchMovieUsecase.executeNowPlaying();
+  Future<List<Movie>> fetchNowPlayingMovies() async {
+    try {
+      final nowPlaying = await fetchMovieUsecase.executeNowPlaying();
+      state = nowPlaying;
+      return nowPlaying;
+    } catch (e) {
+      print('$e');
+      return [];
+    }
   }
 
-  Future<void> fetchPopularMovies() async {
-    state = await fetchMovieUsecase.executePopular();
+  Future<List<Movie>> fetchPopularMovies() async {
+    try {
+      final popular = await fetchMovieUsecase.executePopular();
+      print('에러에러에ㅓㄹ');
+      print(popular);
+      state = popular;
+      return popular;
+    } catch (e) {
+      print('$e');
+      return [];
+    }
   }
 
-  Future<void> fetchTopRatedMovies() async {
-    state = await fetchMovieUsecase.executeTopRated();
+  Future<List<Movie>> fetchTopRatedMovies() async {
+    try {
+      final topRated = await fetchMovieUsecase.executeTopRated();
+      state = topRated;
+      return topRated;
+    } catch (e) {
+      print('$e');
+      return [];
+    }
   }
 
-  Future<void> fetchUpcomingMovies() async {
-    state = await fetchMovieUsecase.executeUpcoming();
+  Future<List<Movie>> fetchUpcomingMovies() async {
+    try {
+      final upcoming = await fetchMovieUsecase.executeUpcoming();
+      state = upcoming;
+      return upcoming;
+    } catch (e) {
+      print('$e');
+      return [];
+    }
   }
 }
 
-// class NowPlayingViewModel extends Notifier<List<Movie>> {
-//   @override
-//   List<Movie> build() => [];
+final homeViewModelProvider = Provider<HomeViewModel>((ref) {
+  final fetchMovieUsecase = ref.read(fetchMovieUsecaseProvider);
+  return HomeViewModel(fetchMovieUsecase);
+});  // HomeViewModel 관리 Provider. 객체 생성은 Providers에서
 
-//   Future<void> fetchNowPlayingMovies() async {
-//     final fetchMovieUsecase = ref.read(fetchMovieUsecaseProvider);
-//     final result = await fetchMovieUsecase.executeNowPlaying();
-//     state = result;
-//   }
-// }
 
-// class PopularViewModel extends Notifier<List<Movie>> {
-//   @override
-//   List<Movie> build() => [];
-
-//   Future<void> fetchPopulargMovies() async {
-//     final fetchMovieUsecase = ref.read(fetchMovieUsecaseProvider);
-//     final result = await fetchMovieUsecase.executePopular();
-//     state = result;
-//   }
-// }
-
-// class TopRatedViewModel extends Notifier<List<Movie>> {
-//   @override
-//   List<Movie> build() => [];
-
-//   Future<void> fetchTopRatedMovies() async {
-//     final fetchMovieUsecase = ref.read(fetchMovieUsecaseProvider);
-//     final result = await fetchMovieUsecase.executeTopRated();
-//     state = result;
-//   }
-// }
-
-// class UpcomingViewModel extends Notifier<List<Movie>> {
-//   @override
-//   List<Movie> build() => [];
-
-//   Future<void> fetchUpcomingMovies() async {
-//     final fetchMovieUsecase = ref.read(fetchMovieUsecaseProvider);
-//     final result = await fetchMovieUsecase.executeUpcoming();
-//     state = result;
-//   }
-// }
-
-// final homeViewModelProvider = NotifierProvider<HomeViewModel, List<Movie>>(() {
-//   return HomeViewModel();
-// });
-
-// 카테고리별 뷰모델 공급자
-final nowPlayingViewModelProvider =
-    NotifierProvider<NowPlayingViewModel, List<Movie>>(() {
-  return NowPlayingViewModel();
-});
-
-final popularViewModelProvider =
-    NotifierProvider<PopularViewModel, List<Movie>>(() {
-  return PopularViewModel();
-});
-
-final topRatedViewModelProvider =
-    NotifierProvider<TopRatedViewModel, List<Movie>>(() {
-  return TopRatedViewModel();
-});
-
-final upcomingViewModelProvider =
-    NotifierProvider<UpcomingViewModel, List<Movie>>(() {
-  return UpcomingViewModel();
-});

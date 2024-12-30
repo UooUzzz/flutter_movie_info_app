@@ -30,6 +30,8 @@ class MovieRepositoryImpl implements MovieRepository {
   Future<List<Movie>> fetchPopularMovies() async {
     try {
       final result = await _movieDataSource.fetchPopularMovies();
+      print('!!!!!!!');
+      print(result);
       return result
           .map(
             (e) => Movie(

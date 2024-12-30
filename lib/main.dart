@@ -4,7 +4,7 @@ import 'package:flutter_movie_reservation_app/presentation/pages/home/home_page.
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 void main() async {
-  await dotenv.load();
+  await dotenv.load(fileName: ".env");
   runApp(const ProviderScope(child: MyApp()));
 }
 
@@ -20,4 +20,3 @@ class MyApp extends StatelessWidget {
     );
   }
 }
-

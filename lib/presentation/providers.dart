@@ -10,17 +10,17 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 // ViewModel 내에서는 Provider에 의해서 UseCase 공급받을거!
 
 final _movieDataSourceProvider = Provider<MovieDataSource>((ref) {
-  return MovieRemoteDataSourceImpl();
+  return MovieRemoteDataSourceImpl(); // API 호출하는 데이터소스 구현
 });
 
 final _movieRepositoryProvider = Provider<MovieRepository>(
   (ref) {
     final dataSource = ref.read(_movieDataSourceProvider);
-    return MovieRepositoryImpl(dataSource);
+    return MovieRepositoryImpl(dataSource); // 데이터 소스를 가지고 Repository 구현
   },
 );
 
-final fetchMovieUsecaseProvider = Provider((ref) {
+final fetchMovieUsecaseProvider = Provider<FetchMovieUsecase>((ref) {
   final movieRepo = ref.read(_movieRepositoryProvider);
-  return FetchMovieUsecase(movieRepo);
+  return FetchMovieUsecase(movieRepo); // Usecase 생성
 });

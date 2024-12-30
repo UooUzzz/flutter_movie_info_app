@@ -1,16 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_movie_reservation_app/presentation/pages/detail/detail_page.dart';
+import 'package:flutter_movie_reservation_app/presentation/pages/home/home_view_model.dart';
 import 'package:flutter_movie_reservation_app/presentation/pages/home/widgets/popular_list.dart';
 import 'package:flutter_movie_reservation_app/presentation/pages/home/widgets/post_list.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends ConsumerWidget {
   @override
-  Widget build(BuildContext context) {
-    // 이미지 리스트
-    final List<String> imageUrl = List.generate(
-      20,
-      (index) => 'https://picsum.photos/200/300',
-    );
+  Widget build(BuildContext context, WidgetRef ref) {
+    final homeViewModel = ref.watch(homeViewModelProvider);
+
+    // 영화 리스트 데이터 갖고오기
+    // final Future<List<Movie>> nowPlaying =
+    //     homeViewModel.fetchNowPlayingMovies();
+    // final Future<List<Movie>> popular = homeViewModel.fetchPopularMovies();
+    // final Future<List<Movie>> topRated = homeViewModel.fetchTopRatedMovies();
+    // final Future<List<Movie>> upcoming = homeViewModel.fetchUpcomingMovies();
 
     return Padding(
       padding: const EdgeInsets.only(left: 15),
@@ -59,17 +64,17 @@ class HomePage extends StatelessWidget {
               ),
               PostList(
                 title: '현재 상영중',
-                imageUrl: imageUrl,
+                imageUrl: homeViewModel.fetchNowPlayingMovies(),
               ),
               SizedBox(height: 18),
-              PopularList(imageUrl),
+              PopularList(homeViewModel.fetchPopularMovies),
               PostList(
                 title: '평점 높은순',
-                imageUrl: imageUrl,
+                imageUrl: homeViewModel.fetchTopRatedMovies(),
               ),
               PostList(
                 title: '개봉 예정',
-                imageUrl: imageUrl,
+                imageUrl: homeViewModel.fetchUpcomingMovies(),
               ),
             ],
           ),
