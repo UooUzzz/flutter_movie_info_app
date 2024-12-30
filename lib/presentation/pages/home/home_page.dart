@@ -56,7 +56,7 @@ class _HomePageState extends ConsumerState<HomePage> {
                       child: Container(
                         height: 500,
                         child: Image.network(
-                          'https://picsum.photos/200/300',
+                          'https://image.tmdb.org/t/p/w500/${dataList.nowPlaying[0].posterPath}',
                           fit: BoxFit.cover,
                         ),
                       ),
