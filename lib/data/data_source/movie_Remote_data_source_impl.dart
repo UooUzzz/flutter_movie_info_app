@@ -32,17 +32,22 @@ class MovieRemoteDataSourceImpl implements MovieDataSource {
           'page': 1,
         },
       );
-      print(response);
+      print('!!!Now!!!');
+      print(response.data);
       if (response.statusCode == 200) {
         final data = response.data['results'] as List? ?? [];
         return data
             .map((movieJson) => MovieResponseDto.fromJson(movieJson))
             .toList();
+        
       } else {
         throw Exception(
             'Failed to load now playing movies: ${response.statusCode}');
+            
       }
+      
     } catch (e) {
+      
       print('Error: $e');
       rethrow;
     }
@@ -59,8 +64,8 @@ class MovieRemoteDataSourceImpl implements MovieDataSource {
           'page': 1,
         },
       );
-      print('object!!!');
-      print(response);
+      print('!!!Popular!!!');
+      print(response.data);
       if (response.statusCode == 200) {
         final data = response.data['results'] as List? ?? [];
         return data
@@ -85,6 +90,8 @@ class MovieRemoteDataSourceImpl implements MovieDataSource {
           'page': 1,
         },
       );
+      print('!!!Top!!!');
+      print(response.data);
       if (response.statusCode == 200) {
         final data = response.data['results'] as List? ?? [];
         return data
@@ -109,6 +116,8 @@ class MovieRemoteDataSourceImpl implements MovieDataSource {
           'page': 1,
         },
       );
+      print('!!!Up!!!');
+      print(response.data);
       if (response.statusCode == 200) {
         final data = response.data['results'] as List? ?? [];
         return data

@@ -3,7 +3,7 @@ import 'package:flutter_movie_reservation_app/domain/entity/movie.dart';
 
 class PostList extends StatelessWidget {
   final String title;
-  final Future<List<Movie>> imageUrl;
+  final List<Movie> imageUrl;
 
   PostList({
     required this.title,
@@ -27,7 +27,7 @@ class PostList extends StatelessWidget {
         ),
         SizedBox(height: 12),
         FutureBuilder<List<Movie>>(
-          future: imageUrl,
+          future: Future.value(imageUrl), // 이렇게하면 List<Movie> 타입을 Future로 감쌀 수 있다. 타입에러 해결! 
           builder: (context, snapshot) {
             if (snapshot.connectionState == ConnectionState.waiting) {
               return Center(child: CircularProgressIndicator());

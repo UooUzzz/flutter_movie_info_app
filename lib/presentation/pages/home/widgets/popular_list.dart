@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_movie_reservation_app/domain/entity/movie.dart';
 
 class PopularList extends StatelessWidget {
-  final Future<List<Movie>> Function() imageUrlP;
+  final List<Movie> imageUrlP;
 
   PopularList(this.imageUrlP);
 
@@ -33,15 +33,13 @@ class popularPosts extends StatelessWidget {
     required this.imageUrlP,
   });
 
-  final Future<List<Movie>> Function() imageUrlP;
+  final List<Movie> imageUrlP;
 
   @override
   Widget build(BuildContext context) {
     return FutureBuilder<List<Movie>>(
-      future: imageUrlP(),
+      future: Future.value(imageUrlP),
       builder: (context, snapshot) {
-        print('스냅샤샷샤샤샤');
-        print(snapshot.data);
         if (snapshot.connectionState == ConnectionState.waiting) {
           return Center(child: CircularProgressIndicator());
         }

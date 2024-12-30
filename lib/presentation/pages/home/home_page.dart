@@ -5,17 +5,19 @@ import 'package:flutter_movie_reservation_app/presentation/pages/home/widgets/po
 import 'package:flutter_movie_reservation_app/presentation/pages/home/widgets/post_list.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class HomePage extends ConsumerWidget {
+class HomePage extends ConsumerStatefulWidget {
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    final homeViewModel = ref.watch(homeViewModelProvider);
+  _HomePageState createState() => _HomePageState();
+}
 
-    // 영화 리스트 데이터 갖고오기
-    // final Future<List<Movie>> nowPlaying =
-    //     homeViewModel.fetchNowPlayingMovies();
-    // final Future<List<Movie>> popular = homeViewModel.fetchPopularMovies();
-    // final Future<List<Movie>> topRated = homeViewModel.fetchTopRatedMovies();
-    // final Future<List<Movie>> upcoming = homeViewModel.fetchUpcomingMovies();
+class _HomePageState extends ConsumerState<HomePage> {
+  @override
+  void initState() {
+    super.initState();
+  }
+  @override
+  Widget build(BuildContext context) {
+    final dataList = ref.watch(homeViewModelProvider);
 
     return Padding(
       padding: const EdgeInsets.only(left: 15),
@@ -64,17 +66,17 @@ class HomePage extends ConsumerWidget {
               ),
               PostList(
                 title: '현재 상영중',
-                imageUrl: homeViewModel.fetchNowPlayingMovies(),
+                imageUrl: dataList.nowPlaying,
               ),
               SizedBox(height: 18),
-              PopularList(homeViewModel.fetchPopularMovies),
+              PopularList(dataList.popular),
               PostList(
                 title: '평점 높은순',
-                imageUrl: homeViewModel.fetchTopRatedMovies(),
+                imageUrl: dataList.topRated,
               ),
               PostList(
                 title: '개봉 예정',
-                imageUrl: homeViewModel.fetchUpcomingMovies(),
+                imageUrl: dataList.upcoming,
               ),
             ],
           ),

@@ -12,10 +12,12 @@ class MovieResponseDto {
 
   MovieResponseDto.fromJson(Map<String, dynamic> map)
       : this(
-          id: map['id'],
-          popularity: map['popularity'],
-          posterPath: map['poster_path'],
+          id: map['id'] ?? 0,
+          popularity: map['popularity'] ?? 0.0,
+          posterPath: map['poster_path'] ?? '',
+          
         );
+        
   
   Map<String, dynamic> toJson() {
     return {
