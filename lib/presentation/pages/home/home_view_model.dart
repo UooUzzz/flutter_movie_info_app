@@ -101,6 +101,6 @@ final homeViewModelProvider = NotifierProvider<HomeViewModel, DataList>(() {
 });  
 
 
-// HomeViewModel 관리 Provider. 객체 생성은 Providers에서
+
 
 

@@ -1,12 +1,60 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_movie_reservation_app/presentation/pages/detail/detail_view_model.dart';
 import 'package:flutter_movie_reservation_app/presentation/pages/detail/widgets/box_office.dart';
 import 'package:flutter_movie_reservation_app/presentation/pages/detail/widgets/movie_category.dart';
 import 'package:flutter_movie_reservation_app/presentation/pages/detail/widgets/sponsor.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:intl/intl.dart';
 
-class DetailPage extends StatelessWidget {
+class DetailPage extends ConsumerStatefulWidget {
+  final int movieId; // 영화 고유번호(ID)
+  final String posterPath; // 이미지 URL
+
+  const DetailPage({
+    required this.movieId,
+    required this.posterPath,
+  });
+
+  @override
+  _DetailPageState createState() => _DetailPageState();
+}
+
+class _DetailPageState extends ConsumerState<DetailPage> {
+  @override
+  void initState() {
+    super.initState();
+
+    ref
+        .read(detailViewModelProvider.notifier)
+        .fetchMovieDetail(widget.movieId); // ID로 영화정보 가져오기
+    // API요청시작, 상태 업데이트
+
+    ref.read(detailViewModelProvider.notifier).fetchGenreData(); // 장르 데이터 가져오기
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Dismissible( // 이걸로도 바꿔봤지만.. 잘안됨. 나중에 진짜 수정!
+    final movieDetail = ref.watch(detailViewModelProvider);
+    // 상태 관찰, 변경 사항 -> UI업데이트
+    
+    final genreMap =
+        ref.watch(detailViewModelProvider.notifier).genreMap; // 장르 데이터
+    final isGenreLoaded = ref.watch(detailViewModelProvider.notifier).isGenreLoaded;
+
+    final movieId = widget.movieId;
+    final posterPath = widget.posterPath;
+
+    if (movieDetail.isEmpty || genreMap.isEmpty || !isGenreLoaded) {
+      return Scaffold(
+        body: Center(child: CircularProgressIndicator()),
+      );
+    }
+    
+    final movie = movieDetail[0];
+    const String imageBaseUrl =
+        'https://image.tmdb.org/t/p/w500/'; // 홈페이지에서 디테일페이지로 전달이 안돼서 이렇게!
+
+    return Dismissible(
       key: UniqueKey(),
       direction: DismissDirection.down,
       onDismissed: (direction) {
@@ -16,14 +64,14 @@ class DetailPage extends StatelessWidget {
         body: ListView(
           children: [
             Hero(
-              tag: 'movie-poster',
+              tag: 'movie-poster-$movieId',
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(10),
                 child: Container(
-                  height: 560,
+                  height: 570,
                   child: Image.network(
-                    'https://picsum.photos/200/300',
-                    fit: BoxFit.cover,
+                    '$imageBaseUrl$posterPath',
+                    fit: BoxFit.fitWidth, // 가로를 꽉채우고 세로는 원래 비율에 맞게 커짐!
                   ),
                 ),
               ),
@@ -37,7 +85,7 @@ class DetailPage extends StatelessWidget {
                   Row(
                     children: [
                       Text(
-                        '영화 제목',
+                        movie.title,
                         style: TextStyle(
                           fontSize: 20,
                           fontWeight: FontWeight.bold,
@@ -45,28 +93,40 @@ class DetailPage extends StatelessWidget {
                       ),
                       Spacer(),
                       Text(
-                        '개봉일',
+                        DateFormat('yyyy-MM-dd')
+                            .format(movie.releaseDate!), // 시간빼고 날짜만 출력
                         style: TextStyle(
                           fontSize: 13,
+                          color: Colors.grey[400],
                         ),
                       ),
                     ],
                   ),
-                  SizedBox(height: 7),
+                  SizedBox(height: 5),
                   Text(
-                    '태그라인',
+                    movie.originalTitle, // 태그라인 없어서 original_title로 해줌!
                     style: TextStyle(fontSize: 13),
                   ),
                   Text(
-                    '러닝타임',
+                    '${movie.runtime.toString()}분',
                     style: TextStyle(fontSize: 14),
                   ),
                   detailDivider(),
-                  MovieCategory(),
+                  MovieCategory(
+                    genreIds: movie.genreIds,
+                    genreMap: genreMap,
+                  ),
                   detailDivider(),
+                  // 띄어쓰기 단위로 줄바꿈을 해주고 싶은데 그렇게 되질 않음...
                   Text(
-                    '영화 설명',
-                    style: TextStyle(fontSize: 13),
+                    textAlign: TextAlign.left,
+                    overflow: TextOverflow.visible,
+                    softWrap: true,
+                    movie.overview,
+                    style: TextStyle(
+                      fontSize: 13,
+                      height: 1.6,
+                    ),
                   ),
                   detailDivider(),
                   SizedBox(height: 10),

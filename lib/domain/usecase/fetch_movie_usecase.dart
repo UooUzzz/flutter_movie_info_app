@@ -25,4 +25,8 @@ class FetchMovieUsecase {
   Future<List<MovieDetail>> executeDetail(int id) async {
     return await _movieRepository.fetchMovieDetail(id);
   }
+
+  Future<Map<int, String>> executeGenreMap() async {
+    return await _movieRepository.fetchGenreMap();
+  }
 }

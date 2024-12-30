@@ -24,3 +24,4 @@ final fetchMovieUsecaseProvider = Provider<FetchMovieUsecase>((ref) {
   final movieRepo = ref.read(_movieRepositoryProvider);
   return FetchMovieUsecase(movieRepo); // Usecase 생성
 });
+

@@ -15,9 +15,19 @@ class _HomePageState extends ConsumerState<HomePage> {
   void initState() {
     super.initState();
   }
+
   @override
   Widget build(BuildContext context) {
     final dataList = ref.watch(homeViewModelProvider);
+
+    // 데이터가 없는 경우 예외처리!
+    if (dataList.nowPlaying.isEmpty) {
+      return Scaffold(
+        body: Center(child: CircularProgressIndicator()),
+      );
+    }
+
+    const String imageBaseUrl = 'https://image.tmdb.org/t/p/w500';
 
     return Padding(
       padding: const EdgeInsets.only(left: 15),
@@ -45,19 +55,22 @@ class _HomePageState extends ConsumerState<HomePage> {
                   borderRadius: BorderRadius.circular(15),
                   child: GestureDetector(
                     onTap: () {
+                      final movie = dataList.nowPlaying[0];
                       Navigator.push(context, MaterialPageRoute(
                         builder: (context) {
-                          return DetailPage();
+                          return DetailPage(
+                            movieId: movie.id,
+                            posterPath: movie.posterPath,
+                          );
                         },
                       ));
                     },
                     child: Hero(
-                      tag: 'movie-poster',
+                      tag: 'movie-poster-${dataList.nowPlaying[0].id}',
                       child: Container(
-                        height: 500,
                         child: Image.network(
-                          'https://image.tmdb.org/t/p/w500/${dataList.nowPlaying[0].posterPath}',
-                          fit: BoxFit.cover,
+                          '$imageBaseUrl${dataList.nowPlaying[0].posterPath}',
+                          fit: BoxFit.fitWidth, // 가로를 꽉채우고 세로는 원래 비율에 맞게 커짐!
                         ),
                       ),
                     ),

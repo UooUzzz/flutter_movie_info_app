@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_movie_reservation_app/domain/entity/movie.dart';
+import 'package:flutter_movie_reservation_app/presentation/pages/detail/detail_page.dart';
 
 class PostList extends StatelessWidget {
   final String title;
@@ -27,7 +28,8 @@ class PostList extends StatelessWidget {
         ),
         SizedBox(height: 12),
         FutureBuilder<List<Movie>>(
-          future: Future.value(imageUrl), // 이렇게하면 List<Movie> 타입을 Future로 감쌀 수 있다. 타입에러 해결! 
+          future: Future.value(
+              imageUrl), // 이렇게하면 List<Movie> 타입을 Future로 감쌀 수 있다. 타입에러 해결!
           builder: (context, snapshot) {
             if (snapshot.connectionState == ConnectionState.waiting) {
               return Center(child: CircularProgressIndicator());
@@ -50,11 +52,24 @@ class PostList extends StatelessWidget {
                   return Row(
                     children: [
                       if (index > 0) SizedBox(width: 8), // 첫번째 이미지빼고 간격주기
-                      ClipRRect(
-                        borderRadius: BorderRadius.circular(10),
-                        child: Image.network(
-                          posterPath,
-                          fit: BoxFit.cover,
+                      GestureDetector(
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(builder: (context) {
+                              return DetailPage(
+                                movieId: movie.id,
+                                posterPath: movie.posterPath,
+                              );
+                            }),
+                          );
+                        },
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(10),
+                          child: Image.network(
+                            posterPath,
+                            fit: BoxFit.cover,
+                          ),
                         ),
                       ),
                     ],

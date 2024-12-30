@@ -95,15 +95,21 @@ class MovieRepositoryImpl implements MovieRepository {
               overview: e.overview,
               popularity: e.popularity,
               posterPath: e.posterPath,
-              releaseDate: e.releaseDate,
+              releaseDate: e.releaseDate ?? DateTime(2025, 1, 1),
               title: e.title,
               voteAverage: e.voteAverage,
               voteCount: e.voteCount,
+              runtime: e.runtime,
             ),
           )
           .toList();
     } catch (e) {
       throw Exception('Fail: $e');
     }
+  }
+
+  @override
+  Future<Map<int, String>> fetchGenreMap() async {
+    return await _movieDataSource.fetchGenreMap();
   }
 }
