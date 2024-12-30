@@ -151,11 +151,11 @@ class MovieRemoteDataSourceImpl implements MovieDataSource {
   }
 
   // 장르 Map 키값 밸류값 
-  Future<Map<int, String>> fetchGenreMap() async {
+  Future<Map<int, String>> fetchGenreMap(int id) async {
     final response = await _dio.get(
-      '/genre/movie/list',
+      '/movie/$id',
       queryParameters: {
-        'language': 'ko',
+        'language': 'ko-KR',
       },
     );
     if (response.statusCode == 200) {

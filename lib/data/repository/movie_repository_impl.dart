@@ -109,7 +109,7 @@ class MovieRepositoryImpl implements MovieRepository {
   }
 
   @override
-  Future<Map<int, String>> fetchGenreMap() async {
-    return await _movieDataSource.fetchGenreMap();
+  Future<Map<int, String>> fetchGenreMap(int id) async {
+    return await _movieDataSource.fetchGenreMap(id);
   }
 }

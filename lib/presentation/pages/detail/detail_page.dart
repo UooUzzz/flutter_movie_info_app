@@ -29,17 +29,18 @@ class _DetailPageState extends ConsumerState<DetailPage> {
         .fetchMovieDetail(widget.movieId); // ID로 영화정보 가져오기
     // API요청시작, 상태 업데이트
 
-    ref.read(detailViewModelProvider.notifier).fetchGenreData(); // 장르 데이터 가져오기
+    ref.read(detailViewModelProvider.notifier).fetchGenreData(widget.movieId); // 장르 데이터 가져오기
   }
 
   @override
   Widget build(BuildContext context) {
     final movieDetail = ref.watch(detailViewModelProvider);
     // 상태 관찰, 변경 사항 -> UI업데이트
-    
+
     final genreMap =
         ref.watch(detailViewModelProvider.notifier).genreMap; // 장르 데이터
-    final isGenreLoaded = ref.watch(detailViewModelProvider.notifier).isGenreLoaded;
+    final isGenreLoaded =
+        ref.watch(detailViewModelProvider.notifier).isGenreLoaded;
 
     final movieId = widget.movieId;
     final posterPath = widget.posterPath;
@@ -49,7 +50,7 @@ class _DetailPageState extends ConsumerState<DetailPage> {
         body: Center(child: CircularProgressIndicator()),
       );
     }
-    
+
     final movie = movieDetail[0];
     const String imageBaseUrl =
         'https://image.tmdb.org/t/p/w500/'; // 홈페이지에서 디테일페이지로 전달이 안돼서 이렇게!
@@ -112,10 +113,13 @@ class _DetailPageState extends ConsumerState<DetailPage> {
                     style: TextStyle(fontSize: 14),
                   ),
                   detailDivider(),
-                  MovieCategory(
-                    genreIds: movie.genreIds,
-                    genreMap: genreMap,
-                  ),
+                  // 장르 로딩되면 표시! 왜안돼...
+                  isGenreLoaded
+                      ? MovieCategory(
+                          genreIds: movie.genreIds,
+                          genreMap: genreMap,
+                        )
+                      : CircularProgressIndicator(),
                   detailDivider(),
                   // 띄어쓰기 단위로 줄바꿈을 해주고 싶은데 그렇게 되질 않음...
                   Text(

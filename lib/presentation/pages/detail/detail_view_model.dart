@@ -14,13 +14,15 @@ class DetailViewModel extends Notifier<List<MovieDetail>> {
     return [];
   }
 
-  Future<void> fetchGenreData() async {
+  Future<void> fetchGenreData(int id) async {
     try {
       final fetchMovieUsecase = ref.read(fetchMovieUsecaseProvider);
-      final genreMap = await fetchMovieUsecase.executeGenreMap();
-      _genreMap = genreMap;
-      _isGenreLoaded = true; // 데이터 로드 완료
-      state = state; // 상태 업데이트!
+      final genreMap = await fetchMovieUsecase.executeGenreMap(id);
+      if (genreMap.isNotEmpty) {
+        _genreMap = genreMap;
+        _isGenreLoaded = true; // 데이터 로드 완료
+        state = state; // 상태 업데이트!
+      }
     } catch (e) {
       print('$e');
       rethrow;
