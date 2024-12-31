@@ -14,6 +14,4 @@ abstract interface class MovieRepository {
 
   Future<List<MovieDetail>> fetchMovieDetail(int id);
 
-  Future<Map<int, String>> fetchGenreMap(int id);
-
 }

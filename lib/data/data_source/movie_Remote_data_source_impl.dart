@@ -149,26 +149,4 @@ class MovieRemoteDataSourceImpl implements MovieDataSource {
       rethrow;
     }
   }
-
-  // 장르 Map 키값 밸류값 
-  Future<Map<int, String>> fetchGenreMap(int id) async {
-    final response = await _dio.get(
-      '/movie/$id',
-      queryParameters: {
-        'language': 'ko-KR',
-      },
-    );
-    if (response.statusCode == 200) {
-      final genres = response.data['genres'] as List? ?? [];
-      Map<int, String> genreMap = {};
-      for (var genre in genres) {
-        int id = genre['id'];
-        String name = genre['name'];
-        genreMap[id] = name;
-      }
-      return genreMap;
-    } else {
-      throw Exception('Failed to load genres');
-    }
-  }
 }

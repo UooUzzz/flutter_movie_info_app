@@ -1,5 +1,5 @@
 class MovieDetail {
-  final List<int> genreIds;
+  final List<String> genres;
   final int id;
   final String originalTitle;
   final String overview;
@@ -12,9 +12,10 @@ class MovieDetail {
   final int runtime;
   final int budget;
   final int revenue;
+  final List<String> productionCompanies;
 
   MovieDetail({
-    required this.genreIds,
+    required this.genres,
     required this.id,
     required this.originalTitle,
     required this.overview,
@@ -27,5 +28,6 @@ class MovieDetail {
     required this.runtime,
     required this.budget,
     required this.revenue,
+    required this.productionCompanies,
   });
 }

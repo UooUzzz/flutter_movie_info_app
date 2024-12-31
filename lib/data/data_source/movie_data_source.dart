@@ -11,6 +11,4 @@ abstract interface class MovieDataSource {
   Future<List<MovieResponseDto>> fetchUpcomingMovies();
 
   Future<List<MovieDetailDto>> fetchMovieDetail(int id);
-
-  Future<Map<int, String>> fetchGenreMap(int id);
 }

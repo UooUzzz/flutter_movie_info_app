@@ -1,29 +1,19 @@
 import 'package:flutter/material.dart';
 
 class MovieCategory extends StatelessWidget {
-  final List<int> genreIds;
-  final Map<int, String> genreMap;
+  final List<String> genres;
 
-  MovieCategory({
-    required this.genreIds,
-    required this.genreMap,
+  const MovieCategory({
+    required this.genres,
   });
-
   @override
   Widget build(BuildContext context) {
-    if (genreIds.isEmpty) {
-      return Center(child: CircularProgressIndicator());
-    }
-
     return SizedBox(
       height: 30,
       child: ListView.builder(
-        itemCount: genreIds.length,
+        itemCount: genres.length,
         scrollDirection: Axis.horizontal,
         itemBuilder: (context, index) {
-          final genreId = genreIds[index];
-          final genreName = genreMap[genreId] ?? 'UnKnown';
-
           return Padding(
             padding: const EdgeInsets.symmetric(horizontal: 2),
             child: Container(
@@ -38,7 +28,7 @@ class MovieCategory extends StatelessWidget {
                 borderRadius: BorderRadius.circular(20),
               ),
               child: Text(
-                genreName,
+                genres[index],
                 style: TextStyle(
                   fontSize: 11,
                   color: Colors.lightBlue,

@@ -89,7 +89,7 @@ class MovieRepositoryImpl implements MovieRepository {
       return result
           .map(
             (e) => MovieDetail(
-              genreIds: e.genreIds,
+              genres: e.genres.map((genre) => genre.name).toList(),
               id: e.id,
               originalTitle: e.originalTitle,
               overview: e.overview,
@@ -102,16 +102,12 @@ class MovieRepositoryImpl implements MovieRepository {
               runtime: e.runtime,
               budget: e.budget,
               revenue: e.revenue,
+              productionCompanies: e.productionCompanies.map((production) => production.logoPath ?? '').toList(),
             ),
           )
           .toList();
     } catch (e) {
       throw Exception('Fail: $e');
     }
-  }
-
-  @override
-  Future<Map<int, String>> fetchGenreMap(int id) async {
-    return await _movieDataSource.fetchGenreMap(id);
   }
 }
