@@ -45,3 +45,6 @@
 ***
 [![Typing SVG](https://readme-typing-svg.demolab.com/?lines=실제+구현한+Movie+Info+App은?;⬇⬇⬇+UooUzzz+첨부+⬇⬇⬇)](https://git.io/typing-svg)   
 <img width="70%" alt="리드미 첨부 자료" src="https://github.com/user-attachments/assets/1cdd7bef-8782-47b8-b964-fd40a1e4b2b9">
+
+***
+
