@@ -39,9 +39,9 @@
  ┗ 🐥main.dart   
 
 ***
-[![Typing SVG](https://readme-typing-svg.demolab.com/?lines=그렇다면+과제에서+요구하는+필수기능은?;⬇⬇⬇+UooUzzz+첨부+⬇⬇⬇)](https://git.io/typing-svg)
-
+[![Typing SVG](https://readme-typing-svg.demolab.com/?lines=그렇다면+과제에서+요구하는+필수기능은?;⬇⬇⬇+UooUzzz+첨부+⬇⬇⬇)](https://git.io/typing-svg)   
 <img width="70%" alt="플러터 심화 과제_필수기능" src="https://github.com/user-attachments/assets/9cad1472-5024-49ec-b233-0b01a4e08abe">
 
 ***
+[![Typing SVG](https://readme-typing-svg.demolab.com/?lines=실제+구현한+Movie+Info+App은?;⬇⬇⬇+UooUzzz+첨부+⬇⬇⬇)](https://git.io/typing-svg)   
 <img width="70%" alt="리드미 첨부 자료" src="https://github.com/user-attachments/assets/1cdd7bef-8782-47b8-b964-fd40a1e4b2b9">
