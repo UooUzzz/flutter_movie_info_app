@@ -47,5 +47,5 @@
 <img width="70%" alt="리드미 첨부 자료" src="https://github.com/user-attachments/assets/1cdd7bef-8782-47b8-b964-fd40a1e4b2b9">
 
 ***
-
+[![Typing SVG](https://readme-typing-svg.demolab.com/?lines=✨+트러블+슈팅!+✨;⬇⬇⬇+UooUzzz+블로그로!+⬇⬇⬇)](https://git.io/typing-svg)   
 #### [[Flutter 심화] 개인 과제 - 영화 정보 앱](TODO URL첨부하기!)
