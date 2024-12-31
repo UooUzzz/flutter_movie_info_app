@@ -16,7 +16,7 @@ class Sponsor extends StatelessWidget {
         itemCount: productionCompanies.length,
         itemBuilder: (context, index) {
           String? logoUrl = productionCompanies[index];
-          if (logoUrl == null || logoUrl.isEmpty) {
+          if (logoUrl.isEmpty) {
             logoUrl = 'wwemzKWzjKYJFfCeiB57q3r4Bcm.png';
           }
           return Padding(
