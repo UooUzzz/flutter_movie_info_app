@@ -6,6 +6,7 @@ class MovieCategory extends StatelessWidget {
   const MovieCategory({
     required this.genres,
   });
+  
   @override
   Widget build(BuildContext context) {
     return SizedBox(

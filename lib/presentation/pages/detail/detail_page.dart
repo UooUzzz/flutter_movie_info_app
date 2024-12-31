@@ -134,7 +134,9 @@ class _DetailPageState extends ConsumerState<DetailPage> {
                     revenue: movie.revenue,
                   ),
                   SizedBox(height: 20),
-                  Sponsor(),
+                  Sponsor(
+                    productionCompanies: movie.productionCompanies,
+                  ),
                 ],
               ),
             ),
