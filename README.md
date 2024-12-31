@@ -1,16 +1,1 @@
-# flutter_movie_reservation_app
-
-A new Flutter project.
-
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+![header](https://capsule-render.vercel.app/api?type=egg&color=fce991&height=300&section=header&text=UooU-nl-Movie%20Info%20App%20zzz&fontSize=50&fontColor=ffffff&animation=twinkling&fontAlign=48&fontAlignY=10&stroke=f4f4f4)
