@@ -1,5 +1,7 @@
 ![header](https://capsule-render.vercel.app/api?type=egg&color=fce991&height=300&section=header&text=UooU-nl-Movie%20Info%20App%20zzz&fontSize=50&fontColor=ffffff&animation=twinkling&fontAlign=48&fontAlignY=10&stroke=f4f4f4)
 
+[![Typing SVG](https://readme-typing-svg.demolab.com/?lines=Movie+Info는+어떤+구조일까?;Clean+Architecture!+관리가+쉬운+구조!)](https://git.io/typing-svg)
+
 📦lib   
  ┣ 📂data   
  ┃ ┣ 📂data_source   
