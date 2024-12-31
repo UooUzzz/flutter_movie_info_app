@@ -29,7 +29,9 @@ class _DetailPageState extends ConsumerState<DetailPage> {
         .fetchMovieDetail(widget.movieId); // ID로 영화정보 가져오기
     // API요청시작, 상태 업데이트
 
-    ref.read(detailViewModelProvider.notifier).fetchGenreData(widget.movieId); // 장르 데이터 가져오기
+    ref
+        .read(detailViewModelProvider.notifier)
+        .fetchGenreData(widget.movieId); // 장르 데이터 가져오기
   }
 
   @override
@@ -142,7 +144,13 @@ class _DetailPageState extends ConsumerState<DetailPage> {
                     ),
                   ),
                   SizedBox(height: 8),
-                  BoxOffice(),
+                  BoxOffice(
+                    voteAverage: movie.voteAverage,
+                    voteCount: movie.voteCount,
+                    popularity: movie.popularity,
+                    budget: movie.budget,
+                    revenue: movie.revenue,
+                  ),
                   SizedBox(height: 20),
                   Sponsor(),
                 ],

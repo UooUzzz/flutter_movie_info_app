@@ -10,6 +10,8 @@ class MovieDetailDto {
   final double voteAverage;
   final int voteCount;
   final int runtime;
+  final int budget;
+  final int revenue;
 
   MovieDetailDto({
     required this.genreIds,
@@ -23,6 +25,8 @@ class MovieDetailDto {
     required this.voteAverage,
     required this.voteCount,
     required this.runtime,
+    required this.budget,
+    required this.revenue,
   });
 
   MovieDetailDto.fromJson(Map<String, dynamic> map)
@@ -40,6 +44,8 @@ class MovieDetailDto {
           voteAverage: map['vote_average'] ?? 0.0,
           voteCount: map['vote_count'] ?? 0,
           runtime: map['runtime'] ?? 0,
+          budget: map['budget'] ?? 0,
+          revenue: map['revenue'] ?? 0,
         );
 
   Map<String, dynamic> toJson() {
@@ -55,6 +61,8 @@ class MovieDetailDto {
       'vote_average': voteAverage,
       'vote_count': voteCount,
       'runtime': runtime,
+      'budget': budget,
+      'revenue': revenue,
     };
   }
 }

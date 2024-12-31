@@ -100,6 +100,8 @@ class MovieRepositoryImpl implements MovieRepository {
               voteAverage: e.voteAverage,
               voteCount: e.voteCount,
               runtime: e.runtime,
+              budget: e.budget,
+              revenue: e.revenue,
             ),
           )
           .toList();

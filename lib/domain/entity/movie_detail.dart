@@ -10,6 +10,8 @@ class MovieDetail {
   final double voteAverage;
   final int voteCount;
   final int runtime;
+  final int budget;
+  final int revenue;
 
   MovieDetail({
     required this.genreIds,
@@ -23,5 +25,7 @@ class MovieDetail {
     required this.voteAverage,
     required this.voteCount,
     required this.runtime,
+    required this.budget,
+    required this.revenue,
   });
 }
