@@ -48,4 +48,9 @@
 
 ***
 [![Typing SVG](https://readme-typing-svg.demolab.com/?lines=✨+트러블+슈팅!+✨;⬇⬇⬇+UooUzzz+블로그로!+⬇⬇⬇)](https://git.io/typing-svg)  
-### 🐣[Flutter 심화] 개인 과제 - 영화 정보 앱](https://example.com)⭐⭐⭐
+### 🐣[Flutter 심화] 개인 과제 - 영화 정보 앱](https://example.com)⭐⭐⭐  
+&nbsp;  
+
+
+![footer](https://capsule-render.vercel.app/api?type=egg&color=fce991&section=footer)
+
