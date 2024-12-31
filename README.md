@@ -36,3 +36,6 @@
  ┃ ┣ 📂widgets   
  ┃ ┗ 📜providers.dart   
  ┗ 📜main.dart   
+
+***
+<img width="70%" alt="플러터 심화 과제_필수기능" src="https://github.com/user-attachments/assets/9cad1472-5024-49ec-b233-0b01a4e08abe">
