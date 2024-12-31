@@ -48,4 +48,4 @@
 
 ***
 [![Typing SVG](https://readme-typing-svg.demolab.com/?lines=✨+트러블+슈팅!+✨;⬇⬇⬇+UooUzzz+블로그로!+⬇⬇⬇)](https://git.io/typing-svg)   
-#### [[Flutter 심화] 개인 과제 - 영화 정보 앱](TODO URL첨부하기!)
+#### <span style="color:grey">[[Flutter 심화] 개인 과제 - 영화 정보 앱](TODO URL첨부하기!)</span>
