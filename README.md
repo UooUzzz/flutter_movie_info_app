@@ -2,7 +2,7 @@
 
 [![Typing SVG](https://readme-typing-svg.demolab.com/?lines=Movie+Info는+어떤+구조일까?;Clean+Architecture!+관리가+쉬운+구조!)](https://git.io/typing-svg)   
 🐓lib   
- ┣ 🐥data   
+ ┣ 🐥data 🔵   
  ┃ ┣ 🐣data_source   
  ┃ ┃ ┣ 🥚movie_data_source.dart   
  ┃ ┃ ┗ 🥚movie_remote_data_source_impl.dart   
@@ -11,7 +11,7 @@
  ┃ ┃ ┗ 🥚movie_response_dto.dart   
  ┃ ┗ 🐣repository   
  ┃ ┃ ┗ 🥚movie_repository_impl.dart   
- ┣ 🐥domain   
+ ┣ 🐥domain 🟢     
  ┃ ┣ 🐣entity   
  ┃ ┃ ┣ 🥚movie.dart   
  ┃ ┃ ┗ 🥚movie_detail.dart   
@@ -19,7 +19,7 @@
  ┃ ┃ ┗ 🥚movie_repository.dart   
  ┃ ┗ 🐣usecase   
  ┃ ┃ ┗ 🥚fetch_movie_usecase.dart   
- ┣ 🐥presentation   
+ ┣ 🐥presentation 🟠    
  ┃ ┣ 🐣pages   
  ┃ ┃ ┣ 🥚detail   
  ┃ ┃ ┃ ┣ 🐔widgets   
