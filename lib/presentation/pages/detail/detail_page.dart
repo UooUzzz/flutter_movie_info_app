@@ -35,6 +35,11 @@ class _DetailPageState extends ConsumerState<DetailPage> {
     final movieDetail = ref.watch(detailViewModelProvider);
     // 상태 관찰, 변경 사항 -> UI업데이트
 
+    // 리스트가 비어있는 경우 예외처리! 로딩중 표시
+    if (movieDetail.isEmpty) {
+      return Center(child: CircularProgressIndicator());
+    }
+
     final movieId = widget.movieId;
     final posterPath = widget.posterPath;
 

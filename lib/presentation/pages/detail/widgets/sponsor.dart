@@ -15,8 +15,10 @@ class Sponsor extends StatelessWidget {
         scrollDirection: Axis.horizontal,
         itemCount: productionCompanies.length,
         itemBuilder: (context, index) {
-          String logoUrl = productionCompanies[index];
-
+          String? logoUrl = productionCompanies[index];
+          if (logoUrl == null || logoUrl.isEmpty) {
+            logoUrl = 'wwemzKWzjKYJFfCeiB57q3r4Bcm.png';
+          }
           return Padding(
             padding: const EdgeInsets.only(right: 8),
             child: Container(
@@ -28,6 +30,15 @@ class Sponsor extends StatelessWidget {
               child: Image.network(
                 'https://image.tmdb.org/t/p/w500/$logoUrl',
                 fit: BoxFit.fitHeight,
+                loadingBuilder: (context, child, loadingProgress) {
+                  if (loadingProgress == null) {
+                    return child;
+                  } else {
+                    return Center(
+                      child: CircularProgressIndicator(),
+                    );
+                  }
+                },
               ),
             ),
           );
